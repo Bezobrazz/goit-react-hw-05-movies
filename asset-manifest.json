@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Bezobrazz.github.io/goit-react-hw-05-movies/static/css/main.7acaea2f.css",
+    "main.js": "/Bezobrazz.github.io/goit-react-hw-05-movies/static/js/main.959f8b58.js",
+    "index.html": "/Bezobrazz.github.io/goit-react-hw-05-movies/index.html",
+    "main.7acaea2f.css.map": "/Bezobrazz.github.io/goit-react-hw-05-movies/static/css/main.7acaea2f.css.map",
+    "main.959f8b58.js.map": "/Bezobrazz.github.io/goit-react-hw-05-movies/static/js/main.959f8b58.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7acaea2f.css",
+    "static/js/main.959f8b58.js"
+  ]
+}
