@@ -1,25 +1,29 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+
 import { AppBar, Divider, Toolbar, Typography } from '@mui/material';
+import { StyledNavLink } from './NavBar.styled';
 
 function NavBar() {
   return (
     <AppBar position="static">
       <Toolbar>
-        <NavLink to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+        <StyledNavLink
+          to="/"
+          style={{ textDecoration: 'none', color: 'inherit' }}
+        >
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Home
           </Typography>
-        </NavLink>
+        </StyledNavLink>
         <Divider orientation="vertical" variant="middle" sx={{ mx: 2 }} />
-        <NavLink
+        <StyledNavLink
           to="/movies"
           style={{ textDecoration: 'none', color: 'inherit' }}
         >
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Movies
           </Typography>
-        </NavLink>
+        </StyledNavLink>
       </Toolbar>
     </AppBar>
   );

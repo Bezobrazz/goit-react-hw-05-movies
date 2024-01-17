@@ -1,6 +1,7 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import NavBar from './NavBar/NavBar';
+import { Toolbar } from '@mui/material';
 
 function Layout() {
   return (
@@ -8,7 +9,9 @@ function Layout() {
       <header>
         <NavBar />
       </header>
-      <Outlet />
+      <Toolbar>
+        <Outlet />
+      </Toolbar>
     </div>
   );
 }
