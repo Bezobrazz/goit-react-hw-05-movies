@@ -1,14 +1,12 @@
 import React from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+import NavBar from './NavBar/NavBar';
 
 function Layout() {
   return (
     <div>
       <header>
-        <nav>
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/movies">Movies</NavLink>
-        </nav>
+        <NavBar />
       </header>
       <Outlet />
     </div>
