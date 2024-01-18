@@ -16,3 +16,28 @@ export const fetchTrendingMovies = async () => {
     throw error;
   }
 };
+
+export const fetchMovieInformationById = async id => {
+  try {
+    const response = await moviesDb.get(
+      `https://api.themoviedb.org/3/movie/${id}`
+    );
+
+    if (response.status === 200) {
+      return response.data;
+    } else {
+      console.error(
+        'Error fetching movie information. Unexpected status:',
+        response.status
+      );
+      throw new Error('Unexpected status');
+    }
+  } catch (error) {
+    console.error('Error fetching movie information:', error.message || error);
+    throw error;
+  }
+};
+
+//  https://api.themoviedb.org/3/movie/609681
+
+// `/movies/get-movie-details/${id}`
