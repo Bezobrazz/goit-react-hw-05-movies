@@ -1,13 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchMovieInformationById } from 'services/api';
+import {
+  Container,
+  Typography,
+  Paper,
+  CircularProgress,
+  ListItem,
+} from '@mui/material';
+import {
+  MovieInfoContainer,
+  MovieDetailsContainer,
+  MovieGenresContainer,
+  ListContainer,
+} from './MovieDetails.styled';
+
+const defaultImg =
+  'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
 
 function MovieDetails() {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
 
-  const defaultImg =
-    'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -22,34 +36,62 @@ function MovieDetails() {
   }, [movieId]);
 
   if (!movie) {
-    return <div>Loading...</div>; // Додано відображення поки дані завантажуються
+    return (
+      <Container>
+        <CircularProgress />
+      </Container>
+    );
   }
 
   return (
-    <div>
-      <img
-        src={
-          movie.poster_path
-            ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
-            : defaultImg
-        }
-        width={250}
-        alt="poster"
-      />
-      <h1>{movie.title}</h1>
-      <p>{movie.overview}</p>
-      {movie.genres && (
-        <div>
-          <p>Genres:</p>
-          <ul>
-            {movie.genres.map(genre => (
-              <li key={genre.id}>{genre.name}</li>
-            ))}
-          </ul>
-        </div>
-      )}
-      {movie.vote_average && <p>Rating: {movie.vote_average.toFixed(1)}</p>}
-    </div>
+    <Container>
+      <Paper elevation={3} sx={{ padding: 2, marginTop: 2 }}>
+        <MovieInfoContainer>
+          <img
+            src={
+              movie.poster_path
+                ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+                : defaultImg
+            }
+            width={250}
+            alt="poster"
+          />
+          <MovieDetailsContainer>
+            <Typography variant="h4" gutterBottom>
+              {movie.title}
+            </Typography>
+            <Typography variant="body1" paragraph>
+              {movie.overview}
+            </Typography>
+            {movie.genres && (
+              <MovieGenresContainer>
+                <Typography variant="subtitle1" fontWeight="bold">
+                  Genres:
+                </Typography>
+
+                <ListContainer>
+                  {movie.genres.map(genre => (
+                    <ListItem key={genre.id}>{genre.name}</ListItem>
+                  ))}
+                </ListContainer>
+              </MovieGenresContainer>
+            )}
+            {movie.vote_average && (
+              <Typography
+                sx={{ display: 'flex', gap: '5px', alignItems: 'center' }}
+                variant="subtitle1"
+                fontWeight="bold"
+              >
+                Rating:{' '}
+                <Typography variant="body1">
+                  {movie.vote_average.toFixed(1)}
+                </Typography>
+              </Typography>
+            )}
+          </MovieDetailsContainer>
+        </MovieInfoContainer>
+      </Paper>
+    </Container>
   );
 }
 

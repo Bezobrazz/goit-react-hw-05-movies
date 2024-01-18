@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+
 import { fetchTrendingMovies } from 'services/api';
+import { Typography, List, ListItem } from '@mui/material';
+
+import { StyledContainer, StyledLink } from './Home.styled';
 
 function Home() {
   const [trendingMovies, setTrendingMovies] = useState([]);
@@ -20,19 +23,21 @@ function Home() {
   }, []);
 
   return (
-    <div>
-      <h2>Trending Movies</h2>
-      <ul>
+    <StyledContainer>
+      <Typography variant="h4" gutterBottom>
+        Trending Movies
+      </Typography>
+      <List>
         {trendingMovies.map(
           movie =>
             movie.title && (
-              <li key={movie.id}>
-                <Link to={movie.id.toString()}>{movie.title}</Link>
-              </li>
+              <ListItem key={movie.id}>
+                <StyledLink to={movie.id.toString()}>{movie.title}</StyledLink>
+              </ListItem>
             )
         )}
-      </ul>
-    </div>
+      </List>
+    </StyledContainer>
   );
 }
 
