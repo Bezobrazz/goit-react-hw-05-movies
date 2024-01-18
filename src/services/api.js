@@ -61,3 +61,27 @@ export const fetchMovieCastById = async id => {
     throw error;
   }
 };
+
+export const fetchMovieReviewsById = async id => {
+  try {
+    const response = await moviesDb.get(
+      `https://api.themoviedb.org/3/movie/${id}/reviews`
+    );
+
+    if (response.status === 200) {
+      return response.data;
+    } else {
+      console.error(
+        'Error fetching movie reviews information. Unexpected status:',
+        response.status
+      );
+      throw new Error('Unexpected status');
+    }
+  } catch (error) {
+    console.error(
+      'Error fetching movie reviews information:',
+      error.message || error
+    );
+    throw error;
+  }
+};
