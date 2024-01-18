@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchMovieReviewsById } from 'services/api';
+import { Card, CardContent, Typography, Grid, Box } from '@mui/material';
 
 function Reviews() {
   const { movieId } = useParams();
   const [reviews, setReviews] = useState(null);
-  console.log(reviews);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,21 +24,45 @@ function Reviews() {
   }
 
   return (
-    <div>
-      <p>Total Reviews: {reviews.total_results}</p>
+    <Box sx={{ flexGrow: 1, overflowY: 'auto' }}>
+      <Typography variant="h6">
+        Total Reviews: {reviews.total_results}
+      </Typography>
       {reviews.results.length > 0 ? (
-        <ul>
+        <Grid container spacing={2}>
           {reviews.results.map(review => (
-            <li key={review.id}>
-              <p>{review.author}</p>
-              <p>{review.content}</p>
-            </li>
+            <Grid item key={review.id} xs={12} sm={6} md={4} lg={3}>
+              <Card
+                sx={{
+                  height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                }}
+              >
+                <CardContent sx={{ flexGrow: 1 }}>
+                  <Typography variant="subtitle1" fontWeight="bold">
+                    {review.author}
+                  </Typography>
+                  <div
+                    style={{
+                      maxHeight: '150px',
+                      overflowY: 'auto',
+                      paddingRight: '15px',
+                    }}
+                  >
+                    <Typography variant="body2">{review.content}</Typography>
+                  </div>
+                </CardContent>
+              </Card>
+            </Grid>
           ))}
-        </ul>
+        </Grid>
       ) : (
-        'We don`t have any reviews for this movie'
+        <Typography variant="body2">
+          We don't have any reviews for this movie
+        </Typography>
       )}
-    </div>
+    </Box>
   );
 }
 
