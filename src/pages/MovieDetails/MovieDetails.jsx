@@ -14,6 +14,7 @@ import {
   MovieGenresContainer,
   ListContainer,
 } from './MovieDetails.styled';
+import { NavLink, Outlet } from 'react-router-dom';
 
 const defaultImg =
   'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
@@ -82,7 +83,7 @@ function MovieDetails() {
                 variant="subtitle1"
                 fontWeight="bold"
               >
-                Rating:{' '}
+                Rating:
                 <Typography variant="body1">
                   {movie.vote_average.toFixed(1)}
                 </Typography>
@@ -91,6 +92,14 @@ function MovieDetails() {
           </MovieDetailsContainer>
         </MovieInfoContainer>
       </Paper>
+      <div>
+        <h2>Additional information</h2>
+        <div>
+          <NavLink to="cast">Show Cast</NavLink>
+          <NavLink to="reviews">Show Reviews</NavLink>
+        </div>
+        <Outlet />
+      </div>
     </Container>
   );
 }

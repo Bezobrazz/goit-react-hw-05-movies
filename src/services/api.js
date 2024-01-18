@@ -38,6 +38,26 @@ export const fetchMovieInformationById = async id => {
   }
 };
 
-//  https://api.themoviedb.org/3/movie/609681
+export const fetchMovieCastById = async id => {
+  try {
+    const response = await moviesDb.get(
+      `https://api.themoviedb.org/3/movie/${id}/credits`
+    );
 
-// `/movies/get-movie-details/${id}`
+    if (response.status === 200) {
+      return response.data;
+    } else {
+      console.error(
+        'Error fetching movie cast information. Unexpected status:',
+        response.status
+      );
+      throw new Error('Unexpected status');
+    }
+  } catch (error) {
+    console.error(
+      'Error fetching movie cast information:',
+      error.message || error
+    );
+    throw error;
+  }
+};
