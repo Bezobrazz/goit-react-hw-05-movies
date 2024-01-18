@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchMovieCastById } from 'services/api';
+import { Card, CardContent, CardMedia, Typography, Grid } from '@mui/material';
 
 function Cast() {
   const { movieId } = useParams();
   const [cast, setCast] = useState(null);
-  console.log(cast);
 
   const defaultImg =
     'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
@@ -25,28 +25,34 @@ function Cast() {
   if (!cast) {
     return <div>Loading...</div>;
   }
+
   return (
-    <div>
-      {cast.cast && (
-        <ul>
-          {cast.cast.map(actor => (
-            <li key={actor.id}>
-              <img
-                src={
+    <Grid container spacing={2}>
+      {cast.cast &&
+        cast.cast.map(actor => (
+          <Grid item key={actor.id} xs={12} sm={6} md={4} lg={3}>
+            <Card>
+              <CardMedia
+                component="img"
+                height="300"
+                image={
                   actor.profile_path
                     ? `https://image.tmdb.org/t/p/w500/${actor.profile_path}`
                     : defaultImg
                 }
-                width={150}
                 alt="actor_photo"
+                style={{ objectFit: 'contain', borderRadius: '8px' }}
               />
-              <p>{actor.name}</p>
-              <p>Character: {actor.character}</p>
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
+              <CardContent>
+                <Typography variant="h6">{actor.name}</Typography>
+                <Typography variant="body2" color="textSecondary">
+                  Character: {actor.character}
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+        ))}
+    </Grid>
   );
 }
 

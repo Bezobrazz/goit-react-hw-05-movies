@@ -7,6 +7,8 @@ import {
   Paper,
   CircularProgress,
   ListItem,
+  Button,
+  Box,
 } from '@mui/material';
 import {
   MovieInfoContainer,
@@ -93,11 +95,25 @@ function MovieDetails() {
         </MovieInfoContainer>
       </Paper>
       <div>
-        <h2>Additional information</h2>
-        <div>
-          <NavLink to="cast">Show Cast</NavLink>
-          <NavLink to="reviews">Show Reviews</NavLink>
-        </div>
+        <Typography variant="h4">Additional information</Typography>
+        <Box sx={{ display: 'flex', gap: 2, marginTop: 2, marginBottom: 2 }}>
+          <Button
+            component={NavLink}
+            to="cast"
+            variant="contained"
+            color="primary"
+          >
+            Show Cast
+          </Button>
+          <Button
+            component={NavLink}
+            to="reviews"
+            variant="contained"
+            color="primary"
+          >
+            Show Reviews
+          </Button>
+        </Box>
         <Outlet />
       </div>
     </Container>
