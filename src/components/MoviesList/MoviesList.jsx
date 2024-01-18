@@ -1,10 +1,12 @@
 import { List, ListItem } from '@mui/material';
 import { StyledLink } from 'pages/Home/Home.styled';
 import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { fetchTrendingMovies } from 'services/api';
 
 function MoviesList() {
   const [trendingMovies, setTrendingMovies] = useState([]);
+  const location = useLocation();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,7 +27,9 @@ function MoviesList() {
         movie =>
           movie.title && (
             <ListItem key={movie.id}>
-              <StyledLink to={`/movies/${movie.id}`}>{movie.title}</StyledLink>
+              <StyledLink state={{ from: location }} to={`/movies/${movie.id}`}>
+                {movie.title}
+              </StyledLink>
             </ListItem>
           )
       )}

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from 'react';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { fetchMovieInformationById } from 'services/api';
 import {
   Container,
@@ -24,6 +24,15 @@ const defaultImg =
 function MovieDetails() {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
+  const navigate = useNavigate();
+  const location = useLocation();
+  console.log(location);
+
+  const goBackLink = useRef(location.state?.from || '/');
+
+  const handleBackButtonClick = () => {
+    navigate(goBackLink.current);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -48,6 +57,14 @@ function MovieDetails() {
 
   return (
     <Container>
+      <Button
+        onClick={handleBackButtonClick}
+        sx={{ marginTop: 2 }}
+        color="success"
+        variant="contained"
+      >
+        Go Back
+      </Button>
       <Paper elevation={3} sx={{ padding: 2, marginTop: 2 }}>
         <MovieInfoContainer>
           <img
