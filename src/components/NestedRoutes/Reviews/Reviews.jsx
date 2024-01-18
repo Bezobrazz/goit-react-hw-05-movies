@@ -30,13 +30,15 @@ function Reviews() {
       </Typography>
       {reviews.results.length > 0 ? (
         <Grid container spacing={2}>
-          {reviews.results.map(review => (
-            <Grid item key={review.id} xs={12} sm={6} md={4} lg={3}>
+          {reviews.results.map((review, index) => (
+            <Grid item key={review.id} xs={12} sm={6} md={4} lg={4}>
               <Card
                 sx={{
                   height: '100%',
                   display: 'flex',
                   flexDirection: 'column',
+                  maxWidth: '300px',
+                  marginBottom: index === reviews.results.length - 1 ? 3 : 0,
                 }}
               >
                 <CardContent sx={{ flexGrow: 1 }}>
@@ -45,7 +47,7 @@ function Reviews() {
                   </Typography>
                   <div
                     style={{
-                      maxHeight: '150px',
+                      maxHeight: '200px',
                       overflowY: 'auto',
                       paddingRight: '15px',
                     }}

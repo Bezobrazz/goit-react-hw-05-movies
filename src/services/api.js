@@ -19,9 +19,7 @@ export const fetchTrendingMovies = async () => {
 
 export const fetchMovieInformationById = async id => {
   try {
-    const response = await moviesDb.get(
-      `https://api.themoviedb.org/3/movie/${id}`
-    );
+    const response = await moviesDb.get(`/movie/${id}`);
 
     if (response.status === 200) {
       return response.data;
@@ -40,9 +38,7 @@ export const fetchMovieInformationById = async id => {
 
 export const fetchMovieCastById = async id => {
   try {
-    const response = await moviesDb.get(
-      `https://api.themoviedb.org/3/movie/${id}/credits`
-    );
+    const response = await moviesDb.get(`/movie/${id}/credits`);
 
     if (response.status === 200) {
       return response.data;
@@ -64,9 +60,7 @@ export const fetchMovieCastById = async id => {
 
 export const fetchMovieReviewsById = async id => {
   try {
-    const response = await moviesDb.get(
-      `https://api.themoviedb.org/3/movie/${id}/reviews`
-    );
+    const response = await moviesDb.get(`/movie/${id}/reviews`);
 
     if (response.status === 200) {
       return response.data;
