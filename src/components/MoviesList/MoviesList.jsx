@@ -1,38 +1,19 @@
 import { List, ListItem } from '@mui/material';
 import { StyledLink } from 'pages/Home/Home.styled';
-import React, { useEffect, useState } from 'react';
+
 import { useLocation } from 'react-router-dom';
-import { fetchTrendingMovies } from 'services/api';
 
-function MoviesList() {
-  const [trendingMovies, setTrendingMovies] = useState([]);
+function MoviesList({ movies }) {
   const location = useLocation();
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await fetchTrendingMovies();
-        console.log('API Response:', data);
-        setTrendingMovies(data.results);
-      } catch (error) {
-        console.error('Error fetching trending movies:', error);
-      }
-    };
-
-    fetchData();
-  }, []);
   return (
     <List>
-      {trendingMovies.map(
-        movie =>
-          movie.title && (
-            <ListItem key={movie.id}>
-              <StyledLink state={{ from: location }} to={`/movies/${movie.id}`}>
-                {movie.title}
-              </StyledLink>
-            </ListItem>
-          )
-      )}
+      {movies.map(movie => (
+        <ListItem key={movie.id}>
+          <StyledLink state={{ from: location }} to={`/movies/${movie.id}`}>
+            {movie.title || movie.name}
+          </StyledLink>
+        </ListItem>
+      ))}
     </List>
   );
 }
