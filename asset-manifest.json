@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Bezobrazz.github.io/goit-react-hw-05-movies/static/css/main.7acaea2f.css",
-    "main.js": "/Bezobrazz.github.io/goit-react-hw-05-movies/static/js/main.03f6915e.js",
+    "main.js": "/Bezobrazz.github.io/goit-react-hw-05-movies/static/js/main.92dbeab5.js",
     "static/js/544.56788d7c.chunk.js": "/Bezobrazz.github.io/goit-react-hw-05-movies/static/js/544.56788d7c.chunk.js",
     "static/js/145.6978ce7f.chunk.js": "/Bezobrazz.github.io/goit-react-hw-05-movies/static/js/145.6978ce7f.chunk.js",
     "static/js/842.63665641.chunk.js": "/Bezobrazz.github.io/goit-react-hw-05-movies/static/js/842.63665641.chunk.js",
@@ -18,7 +18,7 @@
     "static/js/462.beee6b0f.chunk.js": "/Bezobrazz.github.io/goit-react-hw-05-movies/static/js/462.beee6b0f.chunk.js",
     "index.html": "/Bezobrazz.github.io/goit-react-hw-05-movies/index.html",
     "main.7acaea2f.css.map": "/Bezobrazz.github.io/goit-react-hw-05-movies/static/css/main.7acaea2f.css.map",
-    "main.03f6915e.js.map": "/Bezobrazz.github.io/goit-react-hw-05-movies/static/js/main.03f6915e.js.map",
+    "main.92dbeab5.js.map": "/Bezobrazz.github.io/goit-react-hw-05-movies/static/js/main.92dbeab5.js.map",
     "544.56788d7c.chunk.js.map": "/Bezobrazz.github.io/goit-react-hw-05-movies/static/js/544.56788d7c.chunk.js.map",
     "145.6978ce7f.chunk.js.map": "/Bezobrazz.github.io/goit-react-hw-05-movies/static/js/145.6978ce7f.chunk.js.map",
     "842.63665641.chunk.js.map": "/Bezobrazz.github.io/goit-react-hw-05-movies/static/js/842.63665641.chunk.js.map",
@@ -36,6 +36,6 @@
   },
   "entrypoints": [
     "static/css/main.7acaea2f.css",
-    "static/js/main.03f6915e.js"
+    "static/js/main.92dbeab5.js"
   ]
 }
