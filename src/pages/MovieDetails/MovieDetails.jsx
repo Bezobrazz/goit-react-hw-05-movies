@@ -6,15 +6,16 @@ import {
   Typography,
   Paper,
   CircularProgress,
-  ListItem,
   Button,
   Box,
+  ListItem,
 } from '@mui/material';
 import {
   MovieInfoContainer,
   MovieDetailsContainer,
   MovieGenresContainer,
   ListContainer,
+  StyledMovieTitleWrapper,
 } from './MovieDetails.styled';
 import { NavLink, Outlet } from 'react-router-dom';
 
@@ -77,36 +78,54 @@ function MovieDetails() {
             alt="poster"
           />
           <MovieDetailsContainer>
-            <Typography variant="h4" gutterBottom>
-              {movie.title}
-            </Typography>
+            <StyledMovieTitleWrapper>
+              <Typography sx={{ margin: '0' }} variant="h4" gutterBottom>
+                {movie.title}
+              </Typography>
+              {movie.vote_average && (
+                <Typography
+                  sx={{
+                    display: 'flex',
+                    gap: '5px',
+                    alignItems: 'center',
+                    padding: '5px',
+                    backgroundColor: 'gold',
+                    borderRadius: '3px',
+                  }}
+                  variant="subtitle1"
+                  fontWeight="bold"
+                >
+                  Rating:
+                  <Typography variant="body1">
+                    {movie.vote_average.toFixed(1)}
+                  </Typography>
+                </Typography>
+              )}
+            </StyledMovieTitleWrapper>
+
             <Typography variant="body1" paragraph>
               {movie.overview}
             </Typography>
             {movie.genres && (
               <MovieGenresContainer>
-                <Typography variant="subtitle1" fontWeight="bold">
-                  Genres:
-                </Typography>
-
                 <ListContainer>
                   {movie.genres.map(genre => (
-                    <ListItem key={genre.id}>{genre.name}</ListItem>
+                    <ListItem
+                      sx={{
+                        padding: '5px',
+                        backgroundColor: 'teal',
+                        borderRadius: '3px',
+                        fontSize: '10px',
+                        color: 'white',
+                        justifyContent: 'center',
+                      }}
+                      key={genre.id}
+                    >
+                      {genre.name}
+                    </ListItem>
                   ))}
                 </ListContainer>
               </MovieGenresContainer>
-            )}
-            {movie.vote_average && (
-              <Typography
-                sx={{ display: 'flex', gap: '5px', alignItems: 'center' }}
-                variant="subtitle1"
-                fontWeight="bold"
-              >
-                Rating:
-                <Typography variant="body1">
-                  {movie.vote_average.toFixed(1)}
-                </Typography>
-              </Typography>
             )}
           </MovieDetailsContainer>
         </MovieInfoContainer>
