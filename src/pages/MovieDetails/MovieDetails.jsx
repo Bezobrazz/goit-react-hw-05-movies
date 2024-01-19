@@ -24,9 +24,9 @@ const defaultImg =
 function MovieDetails() {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
+
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location);
 
   const goBackLink = useRef(location.state?.from || '/');
 
@@ -65,7 +65,7 @@ function MovieDetails() {
       >
         Go Back
       </Button>
-      <Paper elevation={3} sx={{ padding: 2, marginTop: 2 }}>
+      <Paper elevation={3} sx={{ padding: 2, marginTop: 2, marginBottom: 2 }}>
         <MovieInfoContainer>
           <img
             src={

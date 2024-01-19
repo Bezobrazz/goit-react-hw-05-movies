@@ -79,3 +79,17 @@ export const fetchMovieReviewsById = async id => {
     throw error;
   }
 };
+
+export const fetchMoviesByQuery = async query => {
+  try {
+    const { data } = await moviesDb.get('/search/movie', {
+      params: {
+        query,
+      },
+    });
+    return data;
+  } catch (error) {
+    console.error('Error fetching movies by query:', error);
+    throw error;
+  }
+};
