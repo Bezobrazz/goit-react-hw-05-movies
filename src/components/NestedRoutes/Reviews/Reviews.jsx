@@ -34,10 +34,10 @@ function Reviews() {
             <Grid item key={review.id} xs={12} sm={6} md={4} lg={4}>
               <Card
                 sx={{
-                  height: '100%',
+                  height: '400px',
                   display: 'flex',
                   flexDirection: 'column',
-                  maxWidth: '300px',
+                  maxWidth: '400px',
                   marginBottom: index === reviews.results.length - 1 ? 3 : 0,
                 }}
               >
@@ -47,7 +47,7 @@ function Reviews() {
                   </Typography>
                   <div
                     style={{
-                      maxHeight: '200px',
+                      maxHeight: '300px',
                       overflowY: 'auto',
                       paddingRight: '15px',
                     }}
