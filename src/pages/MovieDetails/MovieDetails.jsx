@@ -89,7 +89,12 @@ function MovieDetails() {
                     gap: '5px',
                     alignItems: 'center',
                     padding: '5px',
-                    backgroundColor: 'gold',
+                    backgroundColor:
+                      movie.vote_average >= 7.5
+                        ? 'lightgreen'
+                        : movie.vote_average >= 6
+                        ? 'gold'
+                        : 'lightcoral',
                     borderRadius: '3px',
                   }}
                   variant="subtitle1"
