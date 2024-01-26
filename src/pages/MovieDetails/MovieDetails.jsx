@@ -82,7 +82,7 @@ function MovieDetails() {
               <Typography sx={{ margin: '0' }} variant="h4" gutterBottom>
                 {movie.title}
               </Typography>
-              {movie.vote_average && (
+              {movie.vote_average > 0 ? (
                 <Typography
                   sx={{
                     display: 'flex',
@@ -105,6 +105,8 @@ function MovieDetails() {
                     {movie.vote_average.toFixed(1)}
                   </Typography>
                 </Typography>
+              ) : (
+                <Typography>No Rating</Typography>
               )}
             </StyledMovieTitleWrapper>
 
