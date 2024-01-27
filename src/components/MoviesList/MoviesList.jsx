@@ -18,7 +18,7 @@ function MoviesList({ movies }) {
     <ImageList
       sx={{
         width: '100%',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
+        gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr)) !important',
       }}
       cols={4}
     >
